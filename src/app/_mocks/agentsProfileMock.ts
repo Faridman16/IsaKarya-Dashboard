@@ -1,0 +1,43 @@
+import { AgentsProfileModel } from '../_models/agentsProfileModel';
+
+export const AgentsProfileMock: AgentsProfileModel[] = [
+    {
+        id: 1,
+        company: 'Creative Code Inc.',
+        username: 'Arung2000',
+        email: 'arung2000@gmail.com',
+        firstName: 'Arung',
+        lastName: 'Sokopo',
+        address: 'Jl. Bone Timur No.14 Sulawesi Selatan',
+        city: 'Bone',
+        country: 'Indonesia',
+        postalCode: '58244',
+        bio: '',
+    },
+    {
+        id: 2,
+        company: 'PT. 1001 Malam',
+        username: 'Arung2000',
+        email: 'arung2000@gmail.com',
+        firstName: 'Arung',
+        lastName: 'Sokopo',
+        address: 'Jl. Bone Timur No.14 Sulawesi Selatan',
+        city: 'Bone',
+        country: 'Indonesia',
+        postalCode: '58244',
+        bio: '',
+    },
+    {
+        id: 3,
+        company: 'PT. Kitakuta',
+        username: 'Arung2000',
+        email: 'arung2000@gmail.com',
+        firstName: 'Arung',
+        lastName: 'Sokopo',
+        address: 'Jl. Bone Timur No.14 Sulawesi Selatan',
+        city: 'Bone',
+        country: 'Indonesia',
+        postalCode: '58244',
+        bio: '',
+    },
+];

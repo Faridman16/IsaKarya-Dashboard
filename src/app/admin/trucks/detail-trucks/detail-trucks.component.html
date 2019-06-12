@@ -1,0 +1,21 @@
+<div class="panel-header panel-header-md">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div *ngIf="truck" class="card-body">
+                        <h1>{{truck.trucksName}}</h1>
+                        <h5>{{truck.trucksType}}</h5>
+                </div>
+                <hr>
+                <div class="button-container">
+                    <button class="btn btn-primary btn-sm" routerLink="../../trucks">Back</button>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

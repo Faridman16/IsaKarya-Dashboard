@@ -1,0 +1,152 @@
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Truck
+        </div>
+        <div class="card-body">
+          <ngb-carousel *ngIf="images1">
+            <ng-template ngbSlide>
+              <img [src]="images1[0]" alt="Random first slide" width="800px">
+              <div class="carousel-caption">
+                  <button href="#" class="btn btn-primary btn-icon btn-round btn-lg" [routerLink]="['./','1']">
+                    <i class="travel_info">Detail Truk</i>
+                  </button>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <img [src]="images1[1]" alt="Random second slide" width="800px">
+              <div class="carousel-caption">
+                  <button href="#" class="btn btn-primary btn-icon btn-round btn-lg" [routerLink]="['./','1']">
+                    <i class="travel_info">Detail Truk</i>
+                  </button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <img [src]="images1[2]" alt="Random third slide" width="800px">
+              <div class="carousel-caption">
+                <button href="#" class="btn btn-primary btn-icon btn-round btn-lg" [routerLink]="['./','1']">
+                  <i class="travel_info">Detail Truk</i>
+                </button>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+        <div class="button-container">
+
+          </div>          
+        <hr>
+        <div class="button-container">
+
+        </div>
+      </div>
+    </div>    
+    <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Truck
+          </div>
+
+          <div class="card-body">
+            <ngb-carousel *ngIf="images2">
+              <ng-template ngbSlide>
+                <img [src]="images2[0]" alt="Random first slide" width="800px">
+                <div class="carousel-caption">
+                  <button href="#" class="btn btn-primary btn-icon btn-round btn-lg">
+                      <i class="travel_info">Truck Info</i>
+                  </button>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <img [src]="images2[1]" alt="Random second slide" width="800px">
+                <div class="carousel-caption">
+                  <button href="#" class="btn btn-primary btn-icon btn-round btn-lg">
+                      <i class="travel_info">Truck Info</i>
+                  </button>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide>
+                <img [src]="images2[2]" alt="Random third slide" width="800px">
+                <div class="carousel-caption">
+                  <button href="#" class="btn btn-primary btn-icon btn-round btn-lg">
+                      <i class="travel_info">Truck Info</i>
+                  </button>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </div>
+          <hr>
+          <div class="button-container">
+
+          </div>
+        </div>
+    </div>       
+  </div>   
+  <div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+              Truck
+            </div>
+            <div class="card-body">
+                <ngb-carousel *ngIf="images3">
+                    <ng-template ngbSlide>
+                      <img src="{{images3[0]}}" alt="Random first slide" width="800px">
+                      <div class="carousel-caption">
+                        <button href="#" class="btn btn-primary btn-icon btn-round btn-lg">
+                            <i class="travel_info">Truck Info</i>
+                        </button>
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                      </div>
+                    </ng-template>
+                    <ng-template ngbSlide>
+                      <img src="{{images3[1]}}" alt="Random second slide" width="800px">
+                      <div class="carousel-caption">
+                        <button href="#" class="btn btn-primary btn-icon btn-round btn-lg">
+                            <i class="travel_info">Truck Info</i>
+                        </button>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      </div>
+                    </ng-template>
+                    <ng-template ngbSlide>
+                      <img src="{{images3[2]}}" alt="Random third slide" width="800px">
+                      <div class="carousel-caption">
+                        <button href="#" class="btn btn-primary btn-icon btn-round btn-lg">
+                            <i class="travel_info">Truck Info</i>
+                        </button>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                      </div>
+                    </ng-template>
+                  </ngb-carousel>
+            </div>
+            <hr>
+            <div class="button-container">
+  
+            </div>
+          </div>        
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5>Kelola Truck</h5>
+        </div>
+        <div class="card-body">
+          <button type="button" class="btn btn-primary">Tambah Truck</button>
+          <button type="button" class="btn btn-info">Edit Truc</button>
+          <button type="button" class="btn btn-danger">Hapus Truck</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
