@@ -89,24 +89,24 @@ export class DashboardComponent implements OnInit {
     ];
 
     // FOR GRADIENT LINE CHART WITH NUMBER AND GRID
-    this.canvas = document.getElementById('lineChartWithNumbersAndGrid');
-    ctx = this.canvas.getContext('2d');
+    // this.canvas = document.getElementById('lineChartWithNumbersAndGrid');
+    // ctx = this.canvas.getContext('2d');
 
-    gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, '#80b6f4');
-    gradientStroke.addColorStop(1, chartColor);
+    // gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    // gradientStroke.addColorStop(0, '#80b6f4');
+    // gradientStroke.addColorStop(1, chartColor);
 
-    gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
-    gradientFill.addColorStop(1, 'rgba(249, 99, 59, 0.40)');
-    this.lineChartWGD_Colors = [
-      {
-        borderColor: '#f96332',
-        pointBorderColor: '#FFF',
-        pointBackgroundColor: '#f96332',
-        backgroundColor: gradientFill
-      }
-    ];
+    // gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    // gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
+    // gradientFill.addColorStop(1, 'rgba(249, 99, 59, 0.40)');
+    // this.lineChartWGD_Colors = [
+    //   {
+    //     borderColor: '#f96332',
+    //     pointBorderColor: '#FFF',
+    //     pointBackgroundColor: '#f96332',
+    //     backgroundColor: gradientFill
+    //   }
+    // ];
 
 //   this.chartService.getChartData().subscribe(data => {
 //       console.log(data);
