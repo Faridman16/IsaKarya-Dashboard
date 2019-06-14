@@ -75,16 +75,16 @@
         </div>
         <div class="card-body">
           <div class="chart-area">
-            <!-- <canvas     baseChart 
+            <canvas     baseChart 
                         id="lineChartWithNumbersAndGrid"
-                        [datasets]="lineChartWithNumbersAndGridData"
-                        [labels]="lineChartWithNumbersAndGridLabels"
-                        [colors]="lineChartWithNumbersAndGridColors"
-                        [options]="lineChartWithNumbersAndGridOptions"
-                        [chartType]="lineChartWithNumbersAndGridType"
+                        chartType="line"
+                        [datasets]="lineChartWGD_Data"
+                        [labels]="lineChartWGD_Labels"
+                        [colors]="lineChartWGD_Colors"
+                        [options]="lineChartWGD_Options"
                         (chartHover)="chartHovered($event)"
                         (chartClick)="chartClicked($event)">
-            </canvas> -->
+            </canvas>
           </div>
         </div>
         <div class="card-footer">
@@ -104,14 +104,16 @@
         </div>
         <div class="card-body">
           <div class="chart-area">
-            <!-- <canvas baseChart id="barChartSimpleGradientsNumbers"
-                        [datasets]="lineChartGradientsNumbersData"
-                        [labels]="lineChartGradientsNumbersLabels"
-                        [colors]="lineChartGradientsNumbersColors"
-                        [options]="lineChartGradientsNumbersOptions"
-                        [chartType]="lineChartGradientsNumbersType"
-                        (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)"></canvas> -->
+            <canvas baseChart 
+                    id="feeChartId"
+                    chartType="bar"
+                    [datasets]="feeChartData"
+                    [labels]="feeChartLabel"
+                    [colors]="feeChartColor"
+                    [options]="feeChartOption"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+            </canvas>
           </div>
         </div>
         <div class="card-footer">
