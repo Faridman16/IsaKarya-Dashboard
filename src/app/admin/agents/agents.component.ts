@@ -12,24 +12,26 @@ import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angular
 })
 export class AgentsComponent implements OnInit {
   listAgent: FormGroup;
-  agents: any;
+  agentList = [];
   imgBackground = ['../assets/img/bg1.jpg', '../assets/img/bg2.jpg', '../assets/img/bg3.jpg'];
   isEdit: Boolean = true;
 
   constructor(
     private agentsService: AgentsService,
-    db: AngularFireDatabase,
-  ) { db.list<any>('agents').valueChanges().subscribe(result => this.agents = result) }
+    private db: AngularFireDatabase,
+  ) {   }
 
   ngOnInit() {
-    // this.getAgents();
-    // this.createForm();
-    // console.log(this.agents);
-    console.log(this.agents);
+    // db.list<any>('agents').valueChanges().subscribe(result => this.agents = result);
+    var agentsRef = this.db.database.ref('agents');
+    agentsRef.on('child_added', function(data) {
+      console.log(data.val());
+    })
+    console.log(this.agentList);
   }
 
   getAgents(){
-    this.agentsService.getAllAgents().subscribe(result => this.agents = result);
+    // this.agentsService.getAllAgents().subscribe(result => this.agents = result);
   }
 
   createForm() {
