@@ -13,12 +13,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class DetailAgentComponent implements OnInit {
 
   imgBackground = 'assets/img/bg1.jpg';
-  agent= new FormGroup({
-    name: new FormControl(''),
-    owner: new FormControl(''),
-    alamat: new FormControl(''),
-    hp: new FormControl(''),
-  });
+  agent: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +21,7 @@ export class DetailAgentComponent implements OnInit {
     private agentService: AgentsService,
     private fb: FormBuilder
   ) {
-    // this.createForm();
+    this.createForm();
    }
 
   ngOnInit() {
@@ -37,18 +32,19 @@ export class DetailAgentComponent implements OnInit {
     // }
   }
 
-  // createForm() {
-  //   this.agent = this.fb.group({
-  //     name: [''],
-  //     owner: [''],
-  //     alamat: [''],
-  //     hp: [''],
-  //  });
-  // }  
+  createForm() {
+    this.agent = new FormGroup({
+      name: new FormControl(''),
+      owner: new FormControl(''),
+      alamat: new FormControl(''),
+      hp: new FormControl(''),
+    });
+  }  
 
   onAddAgent() {
     console.log(this.agent);
     this.agentService.addAgent(this.agent.value);
+    this.createForm();
   }
 
 }

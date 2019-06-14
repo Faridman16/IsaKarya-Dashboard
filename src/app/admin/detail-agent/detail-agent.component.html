@@ -10,15 +10,15 @@
           <div class="card-body">
             <div class="author">
               <a href="#">
-                <img class="avatar border-gray" src="../assets/img/agents/{{agent.img}}" alt="...">
-                <h5 class="title">{{agent.name}}</h5>
+                <img class="avatar border-gray" src="img/../assets/img/agents/agents1.png" alt="...">
+                <h5 class="title">{{agent.value.name}}</h5>
               </a>
               <p class="description">
-                {{agent.desc}}
+                {{agent.value.alamat}}
               </p>
             </div>
             <p class="description text-center">
-              {{agent.address}}
+              {{agent.value.hp}}
             </p>
           </div>
           <hr>
@@ -47,19 +47,19 @@
                 <div class="col-md-5 pr-1">
                   <div class="form-group">
                     <label>Nama Agent</label>
-                    <input type="text" class="form-control" placeholder="Company" formControlName="name">
+                    <input type="text" class="form-control" placeholder="Nama Agent" formControlName="name">
                   </div>
                 </div>
                 <div class="col-md-3 px-1">
                   <div class="form-group">
                     <label>Pemilik Agent</label>
-                    <input type="text" class="form-control" placeholder="Username" formControlName="owner">
+                    <input type="text" class="form-control" placeholder="Pemilik Agent" formControlName="owner">
                   </div>
                 </div>
                 <div class="col-md-4 pl-1">
                   <div class="form-group">
                     <label>Alamat</label>
-                    <input type="email" class="form-control" placeholder="Email" formControlName="alamat">
+                    <input type="email" class="form-control" placeholder="Alamat" formControlName="alamat">
                   </div>
                 </div>
               </div>
@@ -67,7 +67,7 @@
                 <div class="col-md-6 pr-1">
                   <div class="form-group">
                     <label>No HP</label>
-                    <input type="text" class="form-control" placeholder="Company" formControlName="hp">
+                    <input type="text" class="form-control" placeholder="HP" formControlName="hp">
                   </div>
                 </div>
               </div>
