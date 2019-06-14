@@ -15,6 +15,12 @@ import { TrucksComponent } from './trucks/trucks.component';
 import { GudangComponent } from './gudang/gudang.component';
 import { DetailTrucksComponent } from './trucks/detail-trucks/detail-trucks.component';
 import { DetailAgentComponent } from './detail-agent/detail-agent.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+import { environment } from '../../environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,6 +41,10 @@ import { DetailAgentComponent } from './detail-agent/detail-agent.component';
     ChartsModule,
     HttpClientModule,
     AdminRoutingModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,    
   ],
 })
 export class AdminModule { }

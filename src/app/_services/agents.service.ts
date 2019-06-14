@@ -5,6 +5,8 @@ import { AgentsMock } from '../_mocks/agentsMock';
 import { AgentsProfileMock } from '../_mocks/agentsProfileMock';
 import { AgentsProfileModel } from '../_models/agentsProfileModel';
 import { map } from 'rxjs/operators';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +17,11 @@ export class AgentsService {
     return of(AgentsMock);
   }
 
-  getAgentById(id: number): Observable<AgentsModel> {
-    return of(AgentsMock).pipe((
-      map(agents => agents.find(agent => agent.id === id))
-    ));
-  }
+  // getAgentById(id: number): Observable<AgentsModel> {
+  //   return of(AgentsMock).pipe((
+  //     map(agents => agents.find(agent => agent.id === id))
+  //   ));
+  // }
 
   getAgentProfiles(id: number): Observable<AgentsProfileModel> {
     return of(AgentsProfileMock).pipe((
@@ -27,18 +29,12 @@ export class AgentsService {
     ));
   }
 
-  addAgent(agent: AgentsModel, profile: AgentsProfileModel) {
-    const lastAgentId = AgentsMock.length;
-    agent.id = lastAgentId;
-
-    const lastProfileId = AgentsProfileMock.length;
-    profile.id = lastProfileId;
-
-    console.log(agent);
-    console.log(profile);
-    AgentsMock.push(agent);
-    AgentsProfileMock.push(profile);
+  addAgent(agent) {
+    console.log('Phase Two');
+    const agents = this.fireDB.database.ref('agents');
+    agents.push(agent);
+    console.log('Sukses!')
   }
 
-  constructor() { }
+  constructor(private fireDB: AngularFireDatabase) { }
 }

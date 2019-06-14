@@ -3,6 +3,7 @@ import { AgentsModel } from 'src/app/_models/agentsModel';
 import { AgentsProfileModel } from 'src/app/_models/agentsProfileModel';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgentsService } from 'src/app/_services/agents.service';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-detail-agent',
@@ -11,33 +12,43 @@ import { AgentsService } from 'src/app/_services/agents.service';
 })
 export class DetailAgentComponent implements OnInit {
 
-  agent: AgentsModel = {
-    id: 0,
-    name: '',
-    address: '',
-    desc: '',
-    img: '',
-  };
-  agentProfiles: AgentsProfileModel;
-
   imgBackground = 'assets/img/bg1.jpg';
+  agent= new FormGroup({
+    name: new FormControl(''),
+    owner: new FormControl(''),
+    alamat: new FormControl(''),
+    hp: new FormControl(''),
+  });
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private agentService: AgentsService,
-  ) { }
+    private fb: FormBuilder
+  ) {
+    // this.createForm();
+   }
 
   ngOnInit() {
-    const agentId = this.route.snapshot.paramMap.get('id');
-    if (agentId) {
-      this.agentService.getAgentById(+agentId).subscribe(agent => this.agent = agent);
-      this.agentService.getAgentProfiles(+agentId).subscribe(agentProfiles => this.agentProfiles = agentProfiles);
-    }
+    // const agentId = this.route.snapshot.paramMap.get('id');
+    // if (agentId) {
+    //   this.agentService.getAgentById(+agentId).subscribe(agent => this.agent = agent);
+    //   this.agentService.getAgentProfiles(+agentId).subscribe(agentProfiles => this.agentProfiles = agentProfiles);
+    // }
   }
 
+  // createForm() {
+  //   this.agent = this.fb.group({
+  //     name: [''],
+  //     owner: [''],
+  //     alamat: [''],
+  //     hp: [''],
+  //  });
+  // }  
+
   onAddAgent() {
-    this.agentService.addAgent(this.agent, this.agentProfiles);
+    console.log(this.agent);
+    this.agentService.addAgent(this.agent.value);
   }
 
 }
