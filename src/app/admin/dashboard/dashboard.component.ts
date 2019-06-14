@@ -13,6 +13,16 @@ import { FeeChartMock } from '../../_mocks/feeChartMock';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  public lineBigDashboardChartType;
+  public gradientStroke;
+  public chartColor;
+  public ctx;
+  public gradientFill;
+  public canvas;
+
+  // public lineChartGradientsNumbersOptions:any;
+  // public lineChartGradientsNumbersLabels:Array<any>;
+  // public lineChartGradientsNumbersColors:Array<any>
   data: any;
 
   public hexToRGB(hex, alpha) {
@@ -52,8 +62,6 @@ export class DashboardComponent implements OnInit {
   feeChartLabel = FeeChartMock.labels;
   feeChartOptions = FeeChartMock.chartOptions
   feeChartColors: any;
-
-  canvas: any;
 
   public chartClicked(e: any): void {
     console.log(e);
@@ -127,21 +135,23 @@ export class DashboardComponent implements OnInit {
       }
     ];
 
-    // FOR GRADIENT FEE CHART
     this.canvas = document.getElementById("feeChartId");
-    ctx = this.canvas.getContext("2d");
+    this.ctx = this.canvas.getContext("2d");
 
-    gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, this.hexToRGB('#2CA8FF', 0.6));    
+    this.gradientFill = this.ctx.createLinearGradient(0, 170, 0, 50);
+    this.gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    this.gradientFill.addColorStop(1, this.hexToRGB('#2CA8FF', 0.6));
+
     this.feeChartColors = [
-      {
-        backgroundColor: gradientFill,
-        borderColor: "#2CA8FF",
-        pointBorderColor: "#FFF",
-        pointBackgroundColor: "#2CA8FF",
-      }
-    ];
+     {
+       backgroundColor: this.gradientFill,
+       borderColor: "#2CA8FF",
+       pointBorderColor: "#FFF",
+       pointBackgroundColor: "#2CA8FF",
+     }
+   ];
+
+     
 //   this.chartService.getChartData().subscribe(data => {
 //       console.log(data);
 //     this.data = data;
