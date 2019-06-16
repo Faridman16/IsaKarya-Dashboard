@@ -5,22 +5,18 @@ import { AgentsMock } from '../_mocks/agentsMock';
 import { AgentsProfileMock } from '../_mocks/agentsProfileMock';
 import { AgentsProfileModel } from '../_models/agentsProfileModel';
 import { map } from 'rxjs/operators';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { FormGroup } from '@angular/forms';
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
+import { AngularFireDatabase} from '@angular/fire/database';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AgentsService {
 
-  getAllAgents(): Observable<object[]> {
-    let agents = [{name: 'samsudin', age: '10'}];
-    this.fireDB.database.ref('/agents').on('value', function(snapshot) {
-      // agents = (snapshot.val());
-      // console.log(agents);
-    });
-    return of(agents);
+  getAllAgents(): Observable<AgentsModel[]> {
+    return this.fireDB.list<AgentsModel>('agents').valueChanges();
+    
+    // return this.http.get('https://isakarya-dashboard.firebaseio.com/agents.json?print=pretty');
   }
 
   // getAgentById(id: number): Observable<AgentsModel> {
@@ -36,11 +32,13 @@ export class AgentsService {
   }
 
   addAgent(agent) {
-    console.log('Phase Two');
     const agents = this.fireDB.database.ref('agents');
     agents.push(agent);
     console.log('Sukses!')
   }
 
-  constructor(private fireDB: AngularFireDatabase) { }
+  constructor(
+    private fireDB: AngularFireDatabase,
+    private http: HttpClient,
+    ) { }
 }

@@ -13,6 +13,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class DetailAgentComponent implements OnInit {
 
   imgBackground = 'assets/img/bg1.jpg';
+  imgUrl: any = 'img/../assets/img/agents/agents1.png';
   agent: any;
 
   constructor(
@@ -31,6 +32,17 @@ export class DetailAgentComponent implements OnInit {
     //   this.agentService.getAgentProfiles(+agentId).subscribe(agentProfiles => this.agentProfiles = agentProfiles);
     // }
   }
+
+onSelectFile(event) { // called each time file input changes
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+      reader.onload = (_event) => { 
+        this.imgUrl = reader.result; 
+      }
+    }
+}  
 
   createForm() {
     this.agent = new FormGroup({

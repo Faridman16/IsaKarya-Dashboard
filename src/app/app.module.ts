@@ -8,10 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PageNotFoundComponent } from './_utilitesPage/page-not-found/page-not-found.component';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,8 @@ import { environment } from '../environments/environment';
     NgbModule.forRoot(),
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
     AngularFireDatabaseModule,
   ],
   providers: [],
