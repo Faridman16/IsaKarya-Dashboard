@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AgentsModel } from 'src/app/_models/agentsModel';
 import { AgentsService } from 'src/app/_services/agents.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 
@@ -12,7 +12,7 @@ import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angular
 })
 export class AgentsComponent implements OnInit {
   listAgent: FormGroup;
-  agentList = [];
+  agentList: any;
   imgBackground = ['../assets/img/bg1.jpg', '../assets/img/bg2.jpg', '../assets/img/bg3.jpg'];
   isEdit: Boolean = true;
 
@@ -21,17 +21,34 @@ export class AgentsComponent implements OnInit {
     private db: AngularFireDatabase,
   ) {   }
 
-  ngOnInit() {
-    // db.list<any>('agents').valueChanges().subscribe(result => this.agents = result);
-    var agentsRef = this.db.database.ref('agents');
-    agentsRef.on('child_added', function(data) {
-      console.log(data.val());
-    })
+  async ngOnInit() {
+    // this.db.list<any>('agents').valueChanges().subscribe(result => this.agentList = result);
+    this.agentList = await this.getAgents()
+
+    // this.agentList = await list;
     console.log(this.agentList);
   }
 
-  getAgents(){
-    // this.agentsService.getAllAgents().subscribe(result => this.agents = result);
+  snapshotToArray(snapshot) {
+    var returnArr = [];
+
+    snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+
+        returnArr.push(item);
+    });
+
+    return returnArr;
+};  
+
+  async getAgents(){
+    var list = [];
+    this.db.database.ref('agents').on('child_added', result => {
+      list.push(result.val());
+    });
+
+    return list;
   }
 
   createForm() {
