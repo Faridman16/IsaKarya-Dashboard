@@ -15,12 +15,6 @@ export class OperationalComponent implements OnInit {
   //POSISI KEUANGAN
   posisiKeuanganList = [];
   detailPosisiKeuanganList = [];
-  pemasukan: number = 0;
-  pengeluaran: number = 0;
-  selisih: number = 0;
-
-  //TABS
-  activeTab = 'harian';
 
   constructor(private opService: OperationalService) { }
 
@@ -46,12 +40,6 @@ export class OperationalComponent implements OnInit {
 
   cancel(){
     this.toogleOP();
-  }
-
-  tab(opsi){
-    if(opsi=='harian')this.activeTab = 'harian';
-    if(opsi=='bulanan')this.activeTab = 'bulanan';
-    if(opsi=='tahunan')this.activeTab = 'tahunan';
   }
 
 }

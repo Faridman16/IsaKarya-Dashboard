@@ -10,12 +10,14 @@ import { GudangComponent } from './gudang/gudang.component';
 import { DetailTrucksComponent } from './trucks/detail-trucks/detail-trucks.component';
 import { DetailAgentComponent } from './detail-agent/detail-agent.component';
 import { OperationalComponent } from './operational/operational.component';
+import { InOutComponent } from './in-out/in-out.component';
 
 const adminRoutes: Routes = [
   {path: '', component: AdminComponent,
     children: [
       {path: '', component: DashboardComponent},
       {path: 'operational', component: OperationalComponent},
+      {path: 'in-out', component: InOutComponent},
       {path: 'agents', component: AgentsComponent},
       {path: 'trucks', component: TrucksComponent},
       {path: 'gudang', component: GudangComponent},

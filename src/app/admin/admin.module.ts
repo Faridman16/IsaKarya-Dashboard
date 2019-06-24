@@ -17,6 +17,7 @@ import { DetailTrucksComponent } from './trucks/detail-trucks/detail-trucks.comp
 import { DetailAgentComponent } from './detail-agent/detail-agent.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OperationalComponent } from './operational/operational.component';
+import { InOutComponent } from './in-out/in-out.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { OperationalComponent } from './operational/operational.component';
     DetailTrucksComponent,
     DetailAgentComponent,
     OperationalComponent,
+    InOutComponent,
   ],
   imports: [
     CommonModule,
