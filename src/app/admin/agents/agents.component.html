@@ -1,16 +1,16 @@
 <div class="panel-header panel-header-sm">
 </div>
 <div class="main-content">
-  <div class="row" *ngFor="let agent of (agentList | async);let i = index">
+  <div class="row" *ngFor="let agent of (agentList | async);let i = index;">
     <div class="col-md-4">
       <div class="card card-user">
         <div class="image">
-          <img [src]="'img/'+imgBackground[i]" alt="...">
+          <img [src]="'img/'+imgBackground[2]" alt="...">
         </div>
         <div class="card-body">
           <div class="author">
             <a href="#">
-              <img class="avatar border-gray" src="img/../assets/img/agents/agents1.png" alt="...">
+              <img class="avatar border-gray" [src]="agent.imgUrl" alt="...">
               <h5 class="title">{{agent.name}}</h5>
             </a>
             <p class="description">

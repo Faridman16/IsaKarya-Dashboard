@@ -16,6 +16,7 @@ import { GudangComponent } from './gudang/gudang.component';
 import { DetailTrucksComponent } from './trucks/detail-trucks/detail-trucks.component';
 import { DetailAgentComponent } from './detail-agent/detail-agent.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OperationalComponent } from './operational/operational.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     GudangComponent,
     DetailTrucksComponent,
     DetailAgentComponent,
+    OperationalComponent,
   ],
   imports: [
     CommonModule,

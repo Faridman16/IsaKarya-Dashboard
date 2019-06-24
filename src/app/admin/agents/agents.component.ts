@@ -26,13 +26,4 @@ export class AgentsComponent implements OnInit {
     this.agentList = this.agentsService.getAllAgents();
   }
 
-  createForm() {
-    this.listAgent = new FormGroup({
-      name: new FormControl(''),
-      owner: new FormControl(''),
-      alamat: new FormControl(''),
-      hp: new FormControl(''),
-    });
-  }  
-
 }

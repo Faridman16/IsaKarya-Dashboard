@@ -9,11 +9,13 @@ import { TrucksComponent } from './trucks/trucks.component';
 import { GudangComponent } from './gudang/gudang.component';
 import { DetailTrucksComponent } from './trucks/detail-trucks/detail-trucks.component';
 import { DetailAgentComponent } from './detail-agent/detail-agent.component';
+import { OperationalComponent } from './operational/operational.component';
 
 const adminRoutes: Routes = [
   {path: '', component: AdminComponent,
     children: [
       {path: '', component: DashboardComponent},
+      {path: 'operational', component: OperationalComponent},
       {path: 'agents', component: AgentsComponent},
       {path: 'trucks', component: TrucksComponent},
       {path: 'gudang', component: GudangComponent},

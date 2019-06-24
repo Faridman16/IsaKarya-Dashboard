@@ -14,10 +14,13 @@ import { UploadService } from 'src/app/_services/upload.service';
 export class DetailAgentComponent implements OnInit {
 
   imgBackground = 'assets/img/bg1.jpg';
-  imgUrl: any = 'img/../assets/img/agents/agents1.png';
+  imgUrl: any = 'https://firebasestorage.googleapis.com/v0/b/isakarya-dashboard.appspot.com/o/no-image.png?alt=media&token=2ab73b11-cb86-4463-a0e6-104bd6ae00cb';
+  upload;
   file: File;
   progresUpload;
+  imgProfile;
   agent: any;
+  uploadUrl: string = 'https://firebasestorage.googleapis.com/v0/b/isakarya-dashboard.appspot.com/o/no-image.png?alt=media&token=2ab73b11-cb86-4463-a0e6-104bd6ae00cb';
 
   constructor(
     private route: ActivatedRoute,
@@ -60,11 +63,14 @@ export class DetailAgentComponent implements OnInit {
 
   onUpload(e) {
     e.preventDefault();
-    console.log('this is called');
-    this.uploadService.uploadFile(this.file).subscribe(result => this.progresUpload = result);
+    this.uploadService.uploadFile(this.file).then(result => {
+      console.log('Upload Sukses!');
+      this.uploadUrl = result;
+    });
   }
 
   onAddAgent() {
+    this.agent.value.imgUrl = this.uploadUrl;
     console.log(this.agent);
     this.agentService.addAgent(this.agent.value);
     this.createForm();
