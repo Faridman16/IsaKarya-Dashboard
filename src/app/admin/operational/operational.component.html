@@ -29,23 +29,25 @@
                 <td class="text-right">{{op.jumlah}}</td>
                 <td class="text-right">{{op.fee | currency:'Rp. '}}</td>
               </tr>
-              <tr *ngIf="isTambah">
-                <td class="text-center"><i class="now-ui-icons education_paper"></i></td>
-                <td><input type="date" name="tanggal" id="tanggal"></td>
-                <td class="text-right">
-                  <select name="trip" id="trip">
-                    <option value="1">1 Trip</option>
-                    <option value="2">2 Trip</option>
-                    <option value="3">3 Trip</option>
-                    <option value="4">4 Trip</option>
-                  </select>
-                </td>
-                <td class="text-right"><input type="number" name="qty" id="qty" value="{{qty}}"></td>
-                <td class="text-right"><input type="number" name="harga" id="harga" value="{{harga}}"></td>
-                <td class="text-right"><input type="number" name="jumlah" id="jumlah"></td>
-                <td class="text-right"><input type="number" name="fee" id="fee"></td>
-
-              </tr>
+              <!-- FORMNYA -->
+              <form *ngIf="isTambah" [formGroup]="op" (ngSubmit)="onAddOP()">
+                <tr>
+                  <td class="text-center"><i class="now-ui-icons education_paper"></i></td>
+                  <td><input type="date" name="tanggal" id="tanggal" formControlName="tanggal"></td>
+                  <td class="text-right">
+                    <select name="trip" id="trip" formControlName="trip">
+                      <option value="1">1 Trip</option>
+                      <option value="2">2 Trip</option>
+                      <option value="3">3 Trip</option>
+                      <option value="4">4 Trip</option>
+                    </select>
+                  </td>
+                  <td class="text-right"><input type="number" name="qty" id="qty" value="{{qty}}" formControlName="qty"></td>
+                  <td class="text-right"><input type="number" name="harga" id="harga" value="{{harga}}" formControlName="harga"></td>
+                  <td class="text-right"><input type="number" name="jumlah" id="jumlah" formControlName="jumlah"></td>
+                  <td class="text-right"><input type="number" name="fee" id="fee" formControlName="fee"></td>
+                </tr>
+              </form>
               <ng-template #noData>
                 <tr>
                   <td colspan="7" class="text-center">@No Data</td>
