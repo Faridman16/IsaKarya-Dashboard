@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./in-out.component.css']
 })
 export class InOutComponent implements OnInit {
-  posisiKeuanganList: [];
+
+  posisiKeuanganList = [];
   pemasukan: number = 0;
   pengeluaran: number = 0;
   selisih: number = 0;
