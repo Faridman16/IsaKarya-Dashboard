@@ -47,8 +47,8 @@ export class OperationalComponent implements OnInit {
   }
 
   addOP(){
-    this.getOP();
     this.toogleOP();
+    
   }
 
   toogleOP(){

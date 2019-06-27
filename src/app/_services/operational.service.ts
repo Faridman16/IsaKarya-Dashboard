@@ -15,11 +15,15 @@ export class OperationalService {
     return this.fireDB.list<OperationalModel>('operational').valueChanges();
   }
 
-  addOperational(operatioanl: OperationalModel){
-    // const fireOperational = this.fireDB.database.ref('operational');
-    // fireOperational.push(operatioanl);
-    // console.log(operatioanl +' was pushed');
-
-    // this.http.post('localhost:4300')
+  addOperational(operational: OperationalModel){
+    return this.http.post('localhost:4300/op', operational)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
   }
 }
