@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalsComponent } from '../modals/modals.component';
 
 @Component({
   selector: 'app-in-out',
@@ -15,7 +17,8 @@ export class InOutComponent implements OnInit {
   //TABS
   activeTab = 'harian';
 
-  constructor() { }
+  constructor(private modalService: NgbModal) {}
+
 
   ngOnInit() {
   }
@@ -25,5 +28,11 @@ export class InOutComponent implements OnInit {
     if(opsi=='bulanan')this.activeTab = 'bulanan';
     if(opsi=='tahunan')this.activeTab = 'tahunan';
   }
+
+  open() {
+    // const modalRef = this.modalService.open(ModalComponent);
+    const modalRef = this.modalService.open(ModalsComponent);
+    modalRef.componentInstance.title = 'About';
+  }  
 
 }

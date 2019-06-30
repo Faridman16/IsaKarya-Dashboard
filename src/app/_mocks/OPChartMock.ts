@@ -1,19 +1,19 @@
 import { ChartInfo } from '../_models/chartInfo';
 
-export const LineChartMock: ChartInfo = {
+export const OPChartMock: ChartInfo = {
     data: [
         {
-            label: 'Active Users',
+            label: 'Fee',
             pointBorderWidth: 2,
             pointHoverRadius: 4,
             pointHoverBorderWidth: 1,
             pointRadius: 4,
             fill: true,
             borderWidth: 2,
-            data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630]
+            data: []
         }
     ],
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    labels: [],
     chartOptions: {
         maintainAspectRatio: false,
         legend: {

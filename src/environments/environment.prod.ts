@@ -8,5 +8,6 @@ export const environment = {
     storageBucket: "isakarya-dashboard.appspot.com",
     messagingSenderId: "397204852962",
     appId: "1:397204852962:web:ffca924c551bdca7"
-  } 
+  },
+  api: "localhost:4300/"
 };

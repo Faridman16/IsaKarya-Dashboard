@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { OperationalModel } from '../_models/operationalModel';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,14 @@ export class OperationalService {
 
   constructor(private fireDB: AngularFireDatabase, private http: HttpClient) { }
 
-  getOperationalList(): Observable<OperationalModel[]>{
-    return this.fireDB.list<OperationalModel>('operational').valueChanges();
+  getOperationalList(day): Observable<OperationalModel[]>{
+    if(day=='all')return this.http.get<OperationalModel[]>(environment.api+'op');
+    if(day==7)    return this.http.get<OperationalModel[]>(environment.api+'op/7');
+    
+    // return this.fireDB.list<OperationalModel>('operational').valueChanges();
   }
 
-  addOperational(operatioanl: OperationalModel){
-    // const fireOperational = this.fireDB.database.ref('operational');
-    // fireOperational.push(operatioanl);
-    // console.log(operatioanl +' was pushed');
-
-    // this.http.post('localhost:4300')
+  addOperational(operational: OperationalModel): Observable<OperationalModel>{
+    return this.http.post<OperationalModel>(environment.api+'op',operational);
   }
 }

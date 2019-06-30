@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminRoutingModule } from './admin-routing.module';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AdminComponent } from './admin.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -18,6 +18,7 @@ import { DetailAgentComponent } from './detail-agent/detail-agent.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OperationalComponent } from './operational/operational.component';
 import { InOutComponent } from './in-out/in-out.component';
+import { ModalsComponent } from './modals/modals.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { InOutComponent } from './in-out/in-out.component';
     DetailAgentComponent,
     OperationalComponent,
     InOutComponent,
+    ModalsComponent,
   ],
   imports: [
     CommonModule,
@@ -42,5 +44,12 @@ import { InOutComponent } from './in-out/in-out.component';
     AdminRoutingModule,
     ReactiveFormsModule,
   ],
+  providers: [
+    DatePipe,
+    NgbActiveModal,
+  ],
+  entryComponents: [
+    ModalsComponent
+  ]  
 })
 export class AdminModule { }

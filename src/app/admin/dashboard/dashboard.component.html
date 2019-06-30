@@ -19,14 +19,14 @@
       <!-- CHART KIRI -->
       <div class="card card-chart">
         <div class="card-header">
-          <h5 class="card-category">Global Sales</h5>
-          <h4 class="card-title">Shipped Products</h4>
+          <h5 class="card-category">Grafik Operational</h5>
+          <h4 class="card-title">Harian</h4>
           <div ngbDropdown>
             <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" ngbDropdownToggle>
               <i class="now-ui-icons loader_gear"></i>
             </button>
             <div ngbDropdownMenu class="dropdown-menu-right">
-              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" (click)="updateChart()">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
               <a class="dropdown-item text-danger" href="#">Remove Data</a>
@@ -36,12 +36,12 @@
         <div class="card-body">
           <div class="chart-area">
             <canvas     baseChart 
-                        id="lineChart"
+                        id="OPChart"
                         chartType="line"
-                        [datasets]="lineChartData"
-                        [labels]="lineChartLabels"
-                        [colors]="lineChartColors"
-                        [options]="lineChartOptions"
+                        [datasets]="OPChartData"
+                        [labels]="OPChartLabels"
+                        [colors]="OPChartColors"
+                        [options]="OPChartOptions"
                         (chartHover)="chartHovered($event)"
                         (chartClick)="chartClicked($event)">
             </canvas>
