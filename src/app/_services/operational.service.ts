@@ -13,7 +13,7 @@ export class OperationalService {
   constructor(private fireDB: AngularFireDatabase, private http: HttpClient) { }
 
   getOperationalList(day): Observable<OperationalModel[]>{
-    if(day=='all')return this.http.get<OperationalModel[]>(environment.api+'op');
+    if(day=='all')return this.http.get<OperationalModel[]>('http://isakarya.com/api/op');
     if(day==7)    return this.http.get<OperationalModel[]>(environment.api+'op/7');
     
     // return this.fireDB.list<OperationalModel>('operational').valueChanges();
