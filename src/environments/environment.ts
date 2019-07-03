@@ -13,7 +13,7 @@ export const environment = {
     messagingSenderId: "397204852962",
     appId: "1:397204852962:web:ffca924c551bdca7"
   },
-  api: "isakarya.com/api/"
+  api: "http://localhost/isakarya/api/"
 };
 
 /*

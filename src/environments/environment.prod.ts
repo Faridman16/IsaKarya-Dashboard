@@ -9,5 +9,5 @@ export const environment = {
     messagingSenderId: "397204852962",
     appId: "1:397204852962:web:ffca924c551bdca7"
   },
-  api: "localhost:4300/"
+  api: "http://isakarya.com/api/"
 };
