@@ -19,7 +19,7 @@ export class OperationalService {
     // return this.fireDB.list<OperationalModel>('operational').valueChanges();
   }
 
-  addOperational(operational: OperationalModel): Observable<OperationalModel>{
+  addOperational(operational: OperationalModel): Observable<any>{
     console.log(operational);
     return this.http.post<OperationalModel>(environment.api+'op/',operational);
   }

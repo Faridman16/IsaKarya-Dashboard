@@ -52,10 +52,11 @@ export class OperationalComponent implements OnInit {
   addOP(){
     this.toogleOP();
     this.opService.addOperational(this.op.value).subscribe( res => {
-      this.operationalList.push(res);
+      console.log(res);
+      // this.operationalList.push(res);
     },
     err => {
-      console.log("Error occured");
+      console.log(err);
     }
   );
     this.createForm();
