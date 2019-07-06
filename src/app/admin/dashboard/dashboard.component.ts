@@ -160,7 +160,7 @@ export class DashboardComponent implements OnInit {
       this.OPChartData[0].data.length = 0;
       this.OPChartLabels.length = 0;
       res.forEach(op => {
-        this.OPChartData[0].data.push(op.harga.toString());
+        this.OPChartData[0].data.push(op.fee.toString());
         this.OPChartLabels.push(op.tanggal.toString());
       });
       

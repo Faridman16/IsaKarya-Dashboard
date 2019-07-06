@@ -30,7 +30,7 @@ export class ChartService {
   ) { }
 
   getOPChartData(): ChartDataSets[]{
-    this.opService.getOperationalList(5).subscribe(res => {
+    this.opService.getOperationalList(7).subscribe(res => {
       res.forEach(op => {
         this.dataOP[0].data.push(op.harga.toString());
       });

@@ -2,7 +2,7 @@
 </div>
 <div class="main-content">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-xs-12 col-md-8">
       <div class="card">
         <div class="card-header">
           <h5 class="title">Operational</h5>
@@ -34,9 +34,9 @@
               </tr>
               <tr [ngClass]="{hiddenInput: !isTambah}" style="background-color: darkseagreen">
                 <td class="text-center"><i class="now-ui-icons education_paper"></i></td>
-                <td><input type="date" name="tanggal" id="tanggal" formControlName="tanggal" class="form-control"></td>
+                <td><input type="date" name="tanggal" id="tanggal" formControlName="tanggal" class="form-control" style="font-size: 5px"></td>
                 <td class="text-right">
-                  <select name="trip" id="trip" formControlName="trip" class="form-control">
+                  <select name="trip" id="trip" formControlName="trip" class="form-control col-md-4">
                     <option value="1">1 Trip</option>
                     <option value="2">2 Trip</option>
                     <option value="3">3 Trip</option>
