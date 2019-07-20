@@ -1,0 +1,35 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">KATEGORI</h5>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="ctg" (ngSubmit)="addCategory()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Tipe Kategori</label>
+            <select class="form-control" formControlName="type" style="font-size: 16px">
+              <option value="pemasukan">Pemasukan</option>
+              <option value="pengeluaran">Pengeluaran</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Nama Kategori</label>
+            <input type="text" class="form-control" formControlName="name">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+      <button href="#" class="btn btn-danger btn-icon btn-round btn-sm float-right" (click)="activeModal.close('Close click')">
+          <i class="travel_info">X</i>
+      </button> 
+      <button type="button" (click)="addCtg()" class="btn btn-primary btn-icon btn-round btn-sm float-right">
+        <i class="travel_info"><i class="now-ui-icons ui-1_check"></i></i>
+      </button>               
+  </div>
+</div>

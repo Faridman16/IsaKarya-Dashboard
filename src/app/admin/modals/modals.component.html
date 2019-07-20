@@ -6,14 +6,14 @@
       </button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="trx" (ngSubmit)="addTransaction()">
+      <form [formGroup]="trx" (ngSubmit)="addTrx()">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label>Tipe Transaksi</label>
-              <select class="form-control" formControlName="type" style="font-size: 16px">
-                <option value="">Pemasukan</option>
-                <option value="">Pengeluaran</option>
+              <select class="form-control" formControlName="type" style="font-size: 16px" (change)="changeType($event)">
+                <option>Pemasukan</option>
+                <option>Pengeluaran</option>
               </select>
             </div>
             <div class="form-group">
@@ -25,39 +25,34 @@
             <div class="form-group">
               <label>Kategori</label>
               <select class="form-control" formControlName="kategori" style="font-size: 16px">
-                  <option value="">Pemasukan</option>
-                  <option value="">Pengeluaran</option>
-                </select>
+                <option *ngFor="let type of categoryList" value="{{type.id}}">{{type.name}}</option>
+              </select>
             </div>
             <div class="form-group">
               <label>Jumlah</label>
               <div class="input-group">
-                <input type="text" class="form-control"  formControlName="jumlah" (keyup)="currencyFormat($event)">
-                <br>
-                <p>{{nominal | currency:'Rp. '}}</p>
+                <input type="number" class="form-control"  formControlName="jumlah" (keyup)="currencyFormat($event)">
               </div>
-              <!-- <div class="input-group">
-                <span class="input-group-addon">Rp. </span>
-                <input type="text" class="form-control"  formControlName="jumlah"
-                [value]="trx.get('jumlah').value | currency:'Rp. '">
-              </div> -->
-            </div>
+                <span>Nominal : </span><p class="pull-right">{{nominal | currency:'Rp. ' : 'symbol' : '1.0'}}</p>
+            </div>            
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-12">
             <div class="form-group">
               <label>Keterangan</label>
-              <input type="number" class="form-control" formControlName="keterangan">
-            </div>            
+              <div class="input-group">
+                <input type="text" class="form-control"  formControlName="keterangan">
+              </div>
+            </div>
           </div>
         </div>
-        <button type="button">Change</button>
       </form>
     </div>
     <div class="modal-footer">
         <button href="#" class="btn btn-danger btn-icon btn-round btn-sm float-right" (click)="activeModal.close('Close click')">
             <i class="travel_info">X</i>
-        </button>       
+        </button> 
+        <button type="button" (click)="addTrx()" class="btn btn-primary btn-icon btn-round btn-sm float-right">
+          <i class="travel_info"><i class="now-ui-icons ui-1_check"></i></i>
+        </button>               
     </div>
   </div>

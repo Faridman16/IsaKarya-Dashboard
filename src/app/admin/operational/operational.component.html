@@ -2,10 +2,83 @@
 </div>
 <div class="main-content">
   <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Operasional Harian</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="op" (ngSubmit)="addOP()">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Tanggal</label>
+                    <input type="date" name="tanggal" id="tanggal" formControlName="tanggal" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Trip</label>
+                    <select name="trip" id="trip" formControlName="trip" class="form-control" style="font-size: 19px" (change)="tripChange()">
+                        <option value="1">1 Trip</option>
+                        <option value="2">2 Trip</option>
+                        <option value="3">3 Trip</option>
+                        <option value="4">4 Trip</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>QTY</label>
+                    <input type="number" name="qty" id="qty" formControlName="qty" class="form-control text-right" disabled>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Harga/Tabung</label>
+                    <input  type="text" name="harga" id="harga" formControlName="harga" class="form-control text-right" 
+                            [value]="op.get('harga').value | currency:'Rp. ' : 'symbol' : '1.0'" disabled>
+                  </div>
+                </div>    
+                <div class="col-md-6">
+                  
+                </div>                      
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <span>Jumlah : </span><p class="pull-right">{{op.value.jumlah | currency:'Rp. ' : 'symbol' : '1.0'}}</p>
+                    </div> 
+                </div>      
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <span>Supir : </span><p class="pull-right" style="color: red">{{supir | currency:'Rp. ' : 'symbol' : '1.0'}}</p>
+                    </div> 
+                </div> 
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <span>Modal : </span><p class="pull-right" style="color: red">{{modal | currency:'Rp. ' : 'symbol' : '1.0'}}</p>
+                    </div> 
+                </div>                                                             
+                <div class="col-md-12">
+                  <hr>
+                  <div class="form-group">
+                      <span>Fee : </span><p class="pull-right" ngbPopover="Jumlah - Operasional Supir - Modal" 
+                      triggers="mouseenter:mouseleave" style="color: green">{{op.value.fee | currency:'Rp. ' : 'symbol' : '1.0'}}</p>
+                  </div>            
+                </div>
+              </div>
+            </form>
+        </div>
+        <div class="card-footer">
+          <button type="button" (click)="addOP()" class="btn btn-primary btn-icon btn-round btn-sm float-right" style="margin-bottom: 10px">
+              <i class="travel_info"><i class="now-ui-icons ui-1_check"></i></i>
+          </button>   
+        </div>
+      </div>
+    </div>
     <div class="col-xs-12 col-md-8">
       <div class="card">
         <div class="card-header">
-          <h5 class="title">Operational</h5>
+          <h5 class="title">Laporan Operasional</h5>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -20,7 +93,9 @@
               <th class="text-center">QTY</th>
               <th class="text-center">Harga/Tabung</th>
               <th class="text-center">Jumlah</th>
-              <th class="text-center">Fee</th>
+              <th class="text-center">Operasional Supir</th>
+              <th class="text-center">Modal</th>
+              <th class="text-center">Laba</th>
             </thead>
             <tbody *ngIf="operationalList?.length > 0;else loading_state">
               <tr *ngFor="let op of operationalList;let i = index">
@@ -29,24 +104,20 @@
                 <td class="text-right">{{op.trip}}</td>
                 <td class="text-right">{{op.qty}}</td>
                 <td class="text-right">{{op.harga | currency:'Rp. '}}</td>
-                <td class="text-right">{{op.jumlah}}</td>
+                <td class="text-right">{{op.jumlah | currency:'Rp. '}}</td>
+                <td class="text-right">{{op.supir | currency:'Rp. '}}</td>
+                <td class="text-right">{{op.modal | currency:'Rp. '}}</td>
                 <td class="text-right">{{op.fee | currency:'Rp. '}}</td>
               </tr>
-              <tr [ngClass]="{hiddenInput: !isTambah}" style="background-color: darkseagreen">
+
+
+
+              <tr [ngClass]="{hiddenInput: !isTambah}">
                 <td class="text-center"><i class="now-ui-icons education_paper"></i></td>
-                <td><input type="date" name="tanggal" id="tanggal" formControlName="tanggal" class="form-control" style="font-size: 5px"></td>
+                <td></td>
                 <td class="text-right">
-                  <select name="trip" id="trip" formControlName="trip" class="form-control col-md-4">
-                    <option value="1">1 Trip</option>
-                    <option value="2">2 Trip</option>
-                    <option value="3">3 Trip</option>
-                    <option value="4">4 Trip</option>
-                  </select>
                 </td>
-                <td class="text-right"><input type="number" name="qty" id="qty" formControlName="qty" class="form-control"></td>
-                <td class="text-right"><input type="number" name="harga" id="harga" formControlName="harga" class="form-control"></td>
-                <td class="text-right"><input type="number" name="jumlah" id="jumlah" formControlName="jumlah" class="form-control"></td>
-                <td class="text-right"><input type="number" name="fee" id="fee" formControlName="fee" class="form-control"></td>
+
               </tr>             
             </tbody>
             <ng-template #loading_state>
@@ -63,10 +134,7 @@
           </button>   
           <button type="button" *ngIf="isTambah" (click)="cancel()" class="btn btn-primary btn-icon btn-round btn-sm float-right">
             <i class="travel_info"><i class="now-ui-icons ui-1_simple-remove"></i></i>
-          </button> 
-          <button type="button" *ngIf="isTambah" (click)="addOP()" class="btn btn-primary btn-icon btn-round btn-sm float-right">
-            <i class="travel_info"><i class="now-ui-icons ui-1_check"></i></i>
-          </button>                               
+          </button>                             
         </div>
         </div>
       </div>

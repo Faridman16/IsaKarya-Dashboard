@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OperationalComponent } from './operational/operational.component';
 import { InOutComponent } from './in-out/in-out.component';
 import { ModalsComponent } from './modals/modals.component';
+import { CategoryModalsComponent } from './category-modals/category-modals.component';
+import { PosisiKeuanganComponent } from './posisi-keuangan/posisi-keuangan.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { ModalsComponent } from './modals/modals.component';
     OperationalComponent,
     InOutComponent,
     ModalsComponent,
+    CategoryModalsComponent,
+    PosisiKeuanganComponent,
   ],
   imports: [
     CommonModule,
@@ -49,7 +53,8 @@ import { ModalsComponent } from './modals/modals.component';
     NgbActiveModal,
   ],
   entryComponents: [
-    ModalsComponent
+    ModalsComponent,
+    CategoryModalsComponent
   ]  
 })
 export class AdminModule { }

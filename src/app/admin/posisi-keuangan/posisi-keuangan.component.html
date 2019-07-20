@@ -1,0 +1,80 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">  
+    <div class="col-md-4">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="card-header">
+                <h5 class="title">Kategory</h5>
+              </div>
+              <div class="card-body">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Pemasukan</th><th>Nominal</th>
+                            <th>Pengeluaran</th><th>Nominal</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let category of categorys">
+                            <td>{{category.name}}</td>
+                            <td>{{category.total}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  <button href="#" class="btn btn-primary btn-icon btn-round btn-sm float-right" >
+                    <i class="travel_info"><i class="now-ui-icons ui-1_simple-add"></i></i>
+                  </button>        
+            </div>
+        </div>        
+      </div>
+    </div>     
+    <div class="col-md-8">
+      <div class="card">
+          <div class="card-header">
+            <h5 class="title">Detail Posisi Keuangan</h5>
+          </div>
+          <div class="card-body">  
+            <nav>
+              <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link" [ngClass]="{active: activeTab == 'harian'}" (click)="tab('harian')" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">Harian</a>
+                <a class="nav-item nav-link" [ngClass]="{active: activeTab == 'bulanan'}" (click)="tab('bulanan')" id="nav-profile-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false">Bulanan</a>
+                <a class="nav-item nav-link" [ngClass]="{active: activeTab == 'tahunan'}" (click)="tab('tahunan')" id="nav-contact-tab" data-toggle="tab" role="tab" aria-controls="nav-contact" aria-selected="false">Tahunan</a>
+              </div>
+            </nav>   
+            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">   
+            <div class="tab-pane fade" [ngClass]="{active: activeTab == 'harian', show: activeTab == 'harian'}" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <table class="table">
+                <tr style="background-color: rosybrown">
+                  <th>Tanggal</th>
+                  <th>Kategori</th>
+                  <th>Pemasukan</th>
+                  <th>Pengeluaran</th>
+                  <th>Keterangan</th>
+                </tr>
+                <tr *ngFor="let trx of trxList">
+                  <td>{{trx.tanggal}}</td>
+                  <td>{{trx.name}}</td>
+                  <td style="color: green">{{trx.income==0?'':trx.income | currency:'Rp. ' : 'symbol' : '1.0'}}</td>
+                  <td style="color: red">{{trx.outcome==0?'':trx.outcome | currency:'Rp. ' : 'symbol' : '1.0'}}</td>
+                  <td>{{trx.keterangan}}</td>
+                </tr>                
+              </table>
+            </div>
+
+            <div class="tab-pane fade" [ngClass]="{active: activeTab == 'bulanan', show: activeTab == 'bulanan'}" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              2/Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+            </div>
+            <div class="tab-pane fade" [ngClass]="{active: activeTab == 'tahunan', show: activeTab == 'tahunan'}" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+              3.Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+            </div>  
+          </div>                   
+            <button href="#" class="btn btn-primary btn-icon btn-round btn-sm float-right" (click)="open()">
+              <i class="travel_info"><i class="now-ui-icons ui-1_simple-add"></i></i>
+            </button>       
+          </div>
+        </div>
+    </div>
+  </div>  
+</div>

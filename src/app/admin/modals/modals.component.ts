@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Form, FormGroup, FormControl, Validator, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { InoutService } from 'src/app/_services/inout.service';
+import { Router } from '@angular/router';
+import { EventEmitterService } from 'src/app/_services/event-emitter.service';
 
 
 @Component({
@@ -13,6 +16,7 @@ export class ModalsComponent implements OnInit {
 
   trx: FormGroup;
   nominal:string;
+  categoryList;
 
   @Input() title = `Information`;
 
@@ -20,6 +24,9 @@ export class ModalsComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private fb: FormBuilder,
     private datePipe: DatePipe,    
+    private inout: InoutService,
+    private router: Router,
+    private eventEmitterService: EventEmitterService,
   ) {this.createForm();}
 
   createForm() {
@@ -37,20 +44,36 @@ export class ModalsComponent implements OnInit {
   }
 
   currencyFormat(event) {
-    // const curr:number = this.trx.value.jumlah
-    // this.trx.setValue(this.trx.getRawValue);
-    console.log(new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(this.trx.value.jumlah));
     this.nominal = this.trx.value.jumlah;
-    console.log(this.nominal);
-    // this.trx.valueChanges() = curr;
-    // this.trx.patchValue({
-    //   jumlah: curr, 
-    //   // formControlName2: myValue2 (can be omitted)
-    // });
   }
 
-  formater(event){
-    console.log(event);
-  }
+  addTrx(){
+    let trx = this.trx.value;
+    if(trx.type == 'Pemasukan'){
+      trx.income = trx.jumlah;
+      trx.outcome = 0;
+    }else {
+      trx.outcome = trx.jumlah;
+      trx.income = 0;
+    }
+    console.log(trx);
+    this.inout.addTrx(trx).subscribe( res => {
+      console.log(res);
+      this.activeModal.close('Close click');
+      this.eventEmitterService.onAdd();
+    },
+    err => {
+      console.log(err);
+    }
+  );
+    this.createForm();
+  }   
+
+  changeType(event){
+    this.inout.getCategory(this.trx.value.type).subscribe(res =>{
+      this.categoryList = res;
+      console.log(this.categoryList);
+    });
+  }  
 
 }

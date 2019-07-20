@@ -4,34 +4,24 @@
     <div class="row">  
       <div class="col-md-4">
         <div class="card">
-          <div class="card-header">
-            <h5 class="title">Posisi Keuangan</h5>
+            <div class="card-header">
+              <h5 class="title">Kategory</h5>
+            </div>
+            <div class="card-body">
+                Pemasukan
+                <ul>
+                  <li *ngFor="let income of incomes">{{income.name}}</li>
+                </ul>
+                Pengeluaran
+                <ul>
+                  <li *ngFor="let outcome of outcomes">{{outcome.name}}</li>
+                </ul>
+                <button href="#" class="btn btn-primary btn-icon btn-round btn-sm float-right" (click)="openCtg()" ngbPopover="Tambah Category" triggers="mouseenter:mouseleave">
+                  <i class="travel_info"><i class="now-ui-icons ui-1_simple-add"></i></i>
+                </button>        
           </div>
-          <div class="card-body">
-                <table class="table">
-                    <tbody>
-                      <tr>
-                          <th>Pemasukan</th><th>Pengeluaran</th><th>Selisih</th>
-                        </tr>
-                        <tr>
-                          <td>{{pemasukan | currency:'Rp. '}}</td><td>{{pengeluaran | currency:'Rp. '}}</td><td>{{selisih | currency:'Rp. '}}</td>
-                      </tr>                        
-                      <div *ngFor="let pk of posisiKeuanganList">
-                        <tr>
-                          <td colspan="2">{{pk.tanggal}}</td><td></td>dt><td>pk.jumPemasukan</td><td>pk.jumPengeluaran</td>
-                        </tr>
-                        <tr *ngFor="let detPK of detailPosisiKeuanganList">
-                          <td>{{detPK.category}}</td><td>{{detPK.description}}</td><td>{{detPK.pemasukan}}</td><td>{{detPK.pengeluaran}}</td>
-                        </tr>
-                      </div>
-                    </tbody>
-                  </table>
-              <button href="#" class="btn btn-primary btn-icon btn-round btn-sm float-right" [routerLink]="['./','tambahPK']">
-                <i class="travel_info"><i class="now-ui-icons ui-1_simple-add"></i></i>
-              </button>        
-          </div>
-        </div>
-      </div>     
+      </div>
+          </div>        
       <div class="col-md-8">
         <div class="card">
             <div class="card-header">
@@ -48,20 +38,27 @@
               <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">   
               <div class="tab-pane fade" [ngClass]="{active: activeTab == 'harian', show: activeTab == 'harian'}" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <table class="table">
-                  <tr>
-                    <td>2019-05-01</td>
-                    <td>Transport</td>
-                    <td>Bensin truk B04221</td>
-                    <td>0</td>
-                    <td>3.000.000</td>
+                  <tr style="background-color: rosybrown">
+                    <th>Tanggal</th>
+                    <th>Kategori</th>
+                    <th>Pemasukan</th>
+                    <th>Pengeluaran</th>
+                    <th>Keterangan</th>
                   </tr>
+                  <tr *ngFor="let trx of trxList">
+                    <td>{{trx.tanggal}}</td>
+                    <td>{{trx.name}}</td>
+                    <td style="color: green">{{trx.income==0?'':trx.income | currency:'Rp. ' : 'symbol' : '1.0'}}</td>
+                    <td style="color: red">{{trx.outcome==0?'':trx.outcome | currency:'Rp. ' : 'symbol' : '1.0'}}</td>
+                    <td>{{trx.keterangan}}</td>
+                  </tr>  
                   <tr>
-                      <td>2019-05-01</td>
-                      <td>Piutang</td>
-                      <td>Piutang agen Bone</td>
-                      <td>5.000.000</td>
-                      <td>0</td>
-                    </tr>                  
+                    <td></td>
+                    <td class="text-right"><b>TOTAL</b></td>
+                    <td style="color: green">{{sumIncome | currency:'Rp. ' : 'symbol' : '1.0'}}</td>
+                    <td style="color: red">{{sumOutcome | currency:'Rp. ' : 'symbol' : '1.0'}}</td>
+                    <td></td>
+                  </tr>              
                 </table>
               </div>
 
@@ -72,7 +69,7 @@
                 3.Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
               </div>  
             </div>                   
-              <button href="#" class="btn btn-primary btn-icon btn-round btn-sm float-right" (click)="open()">
+              <button href="#" class="btn btn-primary btn-icon btn-round btn-sm float-right" (click)="openTrx()" ngbPopover="Tambah Transaksi" triggers="mouseenter:mouseleave">
                 <i class="travel_info"><i class="now-ui-icons ui-1_simple-add"></i></i>
               </button>       
             </div>
