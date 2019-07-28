@@ -1,5 +1,157 @@
 <div class="panel-header panel-header-sm">
 </div>
 <div class="main-content">
-
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <div class="row">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="title">Posisi Keuangan BRI</h5>                 
+                    </div>
+                    <div class="card-body">
+                    <table class="table table-striped table-bordered">
+                        <thead class="text-primary">
+                            <th class="text-center">Tanggal</th>
+                            <th class="text-center">Saldo Awal</th>
+                            <th class="text-center">Mutasi Pemasukan</th>
+                            <th class="text-center">Mutasi Pengeluaran</th>
+                            <th class="text-center">Saldo Akhir</th>
+                        </thead>
+                        <tbody *ngIf="posKeuangan?.length > 0;else loading_state">
+                            <tr *ngFor="let pos of posKeuangan;let i = index">
+                                <td>{{pos.tanggal | date: 'MMMM'}}</td>
+                                <td class="text-right">{{pos.saldo_awal | currency:'Rp. '}}</td>
+                                <td class="text-right">{{pos.mutasi_pemasukan | currency:'Rp. '}}</td>
+                                <td class="text-right">{{pos.mutasi_pengeluaran | currency:'Rp. '}}</td>
+                                <td class="text-right">{{pos.saldo_akhir | currency:'Rp. '}}</td>
+                            </tr>             
+                        </tbody>
+                        <ng-template #loading_state>
+                        <tbody>
+                            <tr>
+                                <td colspan="9" class="text-center">@No Data</td>
+                            </tr>
+                        </tbody>
+                        </ng-template>
+                    </table>                       
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="title">Posisi Keuangan BNI 1</h5>                 
+                    </div>
+                    <div class="card-body">
+                    <table class="table table-striped table-bordered">
+                        <thead class="text-primary">
+                            <th class="text-center">Tanggal</th>
+                            <th class="text-center">Saldo Awal</th>
+                            <th class="text-center">Mutasi Pemasukan</th>
+                            <th class="text-center">Mutasi Pengeluaran</th>
+                            <th class="text-center">Saldo Akhir</th>
+                        </thead>
+                        <tbody *ngIf="posKeuangan?.length > 0;else loading_state">
+                            <tr *ngFor="let pos of posKeuangan;let i = index">
+                                <td>{{pos.tanggal | date: 'MMMM'}}</td>
+                                <td class="text-right">{{pos.saldo_awal | currency:'Rp. '}}</td>
+                                <td class="text-right">{{pos.mutasi_pemasukan | currency:'Rp. '}}</td>
+                                <td class="text-right">{{pos.mutasi_pengeluaran | currency:'Rp. '}}</td>
+                                <td class="text-right">{{pos.saldo_akhir | currency:'Rp. '}}</td>
+                            </tr>             
+                        </tbody>
+                        <ng-template #loading_state>
+                        <tbody>
+                            <tr>
+                                <td colspan="9" class="text-center">@No Data</td>
+                            </tr>
+                        </tbody>
+                        </ng-template>
+                    </table>                       
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="title">Posisi Keuangan BNI 1</h5>                 
+                    </div>
+                    <div class="card-body">
+                    <table class="table table-striped table-bordered">
+                        <thead class="text-primary">
+                            <th class="text-center">Tanggal</th>
+                            <th class="text-center">Saldo Awal</th>
+                            <th class="text-center">Mutasi Pemasukan</th>
+                            <th class="text-center">Mutasi Pengeluaran</th>
+                            <th class="text-center">Saldo Akhir</th>
+                        </thead>
+                        <tbody *ngIf="posKeuangan?.length > 0;else loading_state">
+                            <tr *ngFor="let pos of posKeuangan;let i = index">
+                                <td>{{pos.tanggal | date: 'MMMM'}}</td>
+                                <td class="text-right">{{pos.saldo_awal | currency:'Rp. '}}</td>
+                                <td class="text-right">{{pos.mutasi_pemasukan | currency:'Rp. '}}</td>
+                                <td class="text-right">{{pos.mutasi_pengeluaran | currency:'Rp. '}}</td>
+                                <td class="text-right">{{pos.saldo_akhir | currency:'Rp. '}}</td>
+                            </tr>             
+                        </tbody>
+                        <ng-template #loading_state>
+                        <tbody>
+                            <tr>
+                                <td colspan="9" class="text-center">@No Data</td>
+                            </tr>
+                        </tbody>
+                        </ng-template>
+                    </table>                       
+                    </div>
+                </div>
+            </div>                                            
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    BRI
+                </div>
+                <div class="card-body">
+                    <img src="../../../assets/img/under-construct.png" alt="" class="img-thumbnail">
+                </div>
+                <input type="file" accept="image/*" (change)="uploadRekKoran($event,'1')" class="form-control">
+                <div *ngIf="isUploading" class="d-flex justify-content-center">
+                    <button class="btn btn-warning btn-sm text-center" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Uploading...
+                    </button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    BNI 1
+                </div>
+                <div class="card-body">
+                    <img src="../../../assets/img/under-construct.png" alt="" class="img-thumbnail">
+                </div>
+                <input type="file" accept="image/*" (change)="uploadRekKoran($event,'2')" class="form-control">
+                <div *ngIf="isUploading" class="d-flex justify-content-center">
+                    <button class="btn btn-warning btn-sm text-center" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Uploading...
+                    </button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    BNI 2
+                </div>
+                <div class="card-body">
+                    <img src="../../../assets/img/under-construct.png" alt="" class="img-thumbnail">
+                </div>
+                <input type="file" accept="image/*" (change)="uploadRekKoran($event,'3')" class="form-control">
+                <div *ngIf="isUploading" class="d-flex justify-content-center">
+                    <button class="btn btn-warning btn-sm text-center" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Uploading...
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

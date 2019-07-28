@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
     private opService: OperationalService,
   ) { }
   
-  // BIG CHART
+  // POSISI SALDO CHART
   lineBigDashboardChartData = bigChartMock.data;
   lineBigDashboardChartLabels = bigChartMock.labels;
   lineBigDashboardChartOptions = bigChartMock.chartOptions;
@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
   OPChartOptions = OPChartMock.chartOptions;
   OPChartColors: any;
 
-  // LINE CHART WITH GRID AND DATA
+  // Incomes/Outcomes Chart With Data
   lineChartWGD_Data = LineChartWGDMock.data;
   lineChartWGD_Labels = LineChartWGDMock.labels;
   lineChartWGD_Options = LineChartWGDMock.chartOptions;
@@ -157,6 +157,7 @@ export class DashboardComponent implements OnInit {
   
   getOPChart() {
     this.opService.getOperationalList(7).subscribe(res => {
+      console.log(res);
       this.OPChartData[0].data.length = 0;
       this.OPChartLabels.length = 0;
       res.forEach(op => {

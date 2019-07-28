@@ -14,7 +14,7 @@ export class CategoryModalsComponent implements OnInit {
   ctg: FormGroup;
 
   constructor(
-    private activeModal : NgbActiveModal,
+    public activeModal : NgbActiveModal,
     private utilService: UtilitesService,
     private eventEmitterService: EventEmitterService,
   ) {this.createForm()}

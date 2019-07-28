@@ -13,12 +13,23 @@ import { CategoryModalsComponent } from '../category-modals/category-modals.comp
 })
 export class InOutComponent implements OnInit {
 
-  trxList = [];
   incomes = [];
   outcomes = [];
-
-  sumIncome = 0;
-  sumOutcome = 0;
+  
+  // HARIAN
+  trxListHarian = [];
+  sumIncomeHarian = 0;
+  sumOutcomeHarian = 0;
+  
+  // BULANAN
+  trxListBulanan = [];
+  sumIncomeBulanan = 0;
+  sumOutcomeBulanan = 0;
+  
+  // TAHUNAN
+  trxListTahunan = [];
+  sumIncomeTahunan = 0;
+  sumOutcomeTahunan = 0;
 
   pemasukan: number = 0;
   pengeluaran: number = 0;
@@ -54,11 +65,9 @@ export class InOutComponent implements OnInit {
   }
 
   getData(){
-    this.inout.getInOuts().subscribe(res => {
-      this.trxList = res
-      console.log(this.trxList);
-      this.sumALl();
-    });
+    this.getHarian();
+    this.getBulanan();
+    this.getTahunan();
 
     this.utilService.getCtgPemasukan().subscribe(resIn => {
       this.incomes = resIn;
@@ -69,13 +78,59 @@ export class InOutComponent implements OnInit {
     });   
   } 
 
-  sumALl(){
-    this.sumIncome = 0;
-    this.sumOutcome = 0;
-    this.trxList.forEach((trx)=>{
-      this.sumIncome += Number(trx.income);
-      this.sumOutcome += Number(trx.outcome); 
+  getHarian(){
+    this.inout.getInOuts('harian').subscribe(res => {
+      this.trxListHarian = res
+      console.log(this.trxListHarian);
+      this.sumAll('harian');
+    });    
+  }
+
+  getBulanan(){
+    this.inout.getInOuts('bulanan').subscribe(res => {
+      const listBulan = this.utilService.parsBulan(res);
+      console.log(listBulan);
+      this.trxListBulanan = listBulan;
+      console.log(this.trxListBulanan);
+      this.sumAll('bulanan');
     });
+  }
+
+  getTahunan(){
+    this.inout.getInOuts('tahunan').subscribe(res => {
+      this.trxListTahunan = res
+      console.log(this.trxListTahunan);
+      this.sumAll('tahunan');
+    });
+  }
+
+  sumAll(period){
+    switch (period){
+      case 'harian':
+        this.sumIncomeHarian = 0;
+        this.sumOutcomeHarian = 0;
+        this.trxListHarian.forEach((trx)=>{
+          this.sumIncomeHarian += Number(trx.income);
+          this.sumOutcomeHarian += Number(trx.outcome); 
+        });
+        break;
+      case 'bulanan':
+        this.sumIncomeBulanan = 0;
+        this.sumOutcomeBulanan = 0;
+        this.trxListBulanan.forEach((trx)=>{
+          this.sumIncomeBulanan += Number(trx.income);
+          this.sumOutcomeBulanan += Number(trx.outcome); 
+        });
+        break;      
+      case 'tahunan':
+        this.sumIncomeTahunan = 0;
+        this.sumOutcomeTahunan = 0;
+        this.trxListTahunan.forEach((trx)=>{
+          this.sumIncomeTahunan += Number(trx.income);
+          this.sumOutcomeTahunan += Number(trx.outcome); 
+        });
+        break;        
+    }
   }
 
   openTrx() {

@@ -12,6 +12,7 @@ import { DetailAgentComponent } from './detail-agent/detail-agent.component';
 import { OperationalComponent } from './operational/operational.component';
 import { InOutComponent } from './in-out/in-out.component';
 import { PosisiKeuanganComponent } from './posisi-keuangan/posisi-keuangan.component';
+import { LaporanKeuanganComponent } from './laporan-keuangan/laporan-keuangan.component';
 
 const adminRoutes: Routes = [
   {path: '', component: AdminComponent,
@@ -20,6 +21,7 @@ const adminRoutes: Routes = [
       {path: 'operational', component: OperationalComponent},
       {path: 'in-out', component: InOutComponent},
       {path: 'posisi-keuangan', component: PosisiKeuanganComponent},
+      {path: 'laporan-keuangan', component: LaporanKeuanganComponent},
       {path: 'agents', component: AgentsComponent},
       {path: 'trucks', component: TrucksComponent},
       {path: 'gudang', component: GudangComponent},

@@ -36,4 +36,13 @@ export class UploadService {
     // .subscribe()    
     // return this.imgURL;
   }
+
+  uploadRekKoran(file: File){
+    const fileRef = this.fireStorage.ref(`rekening_koran/${file.name}`);
+    const task = fileRef.put(file).then(snapshot => {
+      return snapshot.ref.getDownloadURL()
+    });  
+    
+    return task;
+  }
 }

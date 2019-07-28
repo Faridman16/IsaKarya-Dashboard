@@ -21,6 +21,8 @@ import { InOutComponent } from './in-out/in-out.component';
 import { ModalsComponent } from './modals/modals.component';
 import { CategoryModalsComponent } from './category-modals/category-modals.component';
 import { PosisiKeuanganComponent } from './posisi-keuangan/posisi-keuangan.component';
+import { LaporanKeuanganComponent } from './laporan-keuangan/laporan-keuangan.component';
+import { SaldoPerusahaanComponent } from './saldo-perusahaan/saldo-perusahaan.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { PosisiKeuanganComponent } from './posisi-keuangan/posisi-keuangan.compo
     ModalsComponent,
     CategoryModalsComponent,
     PosisiKeuanganComponent,
+    LaporanKeuanganComponent,
+    SaldoPerusahaanComponent,
   ],
   imports: [
     CommonModule,

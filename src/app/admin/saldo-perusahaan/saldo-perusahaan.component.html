@@ -1,0 +1,48 @@
+<div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-content">
+      <div class="row">
+          <div class="col-xs-12 col-md-8">
+              <div class="card">
+                  <div class="card-header">
+                      <h5 class="title">Saldo Perusahaan</h5>                 
+                  </div>
+                  <div class="card-body">
+                  <table class="table table-striped table-bordered">
+                      <thead class="text-primary">
+                        <tr>
+                          <th>Bulan</th>
+                          <th>Saldo Awal</th>
+                          <th class="text-center">Mutasi Pemasukan</th>
+                          <th class="text-center">Mutasi Pengeluaran</th>
+                          <th class="text-center">Saldo Akhir</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngIf="saldoList?.length > 0;else loading_state">
+                        <tr *ngFor="let saldo of saldoList;let i = index">
+                          <td>{{saldo.bulan | date: 'MMMM'}}</td>
+                          <td class="text-right">{{saldo.saldoAwal | currency:'Rp. '}}</td>
+                          <td class="text-right">{{saldo.mutasiPemasukan | currency:'Rp. '}}</td>
+                          <td class="text-right">{{saldo.mutasiPengeluaran | currency:'Rp. '}}</td>
+                          <td class="text-right">{{saldo.saldoAkhir | currency:'Rp. '}}</td>
+                        </tr>
+                      </tbody>
+                      <ng-template #loading_state>
+                      <tbody>
+                          <tr>
+                              <td colspan="9" class="text-center">@No Data</td>
+                          </tr>
+                      </tbody>
+                      </ng-template>
+                  </table> 
+                  <button type="button" *ngIf="!isTambah" (click)="toogleOP()" class="btn btn-primary btn-icon btn-round btn-sm float-right">
+                      <i class="travel_info"><i class="now-ui-icons ui-1_simple-add"></i></i>
+                  </button>   
+                  <button type="button" *ngIf="isTambah" (click)="cancel()" class="btn btn-primary btn-icon btn-round btn-sm float-right">
+                      <i class="travel_info"><i class="now-ui-icons ui-1_simple-remove"></i></i>
+                  </button>                             
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>

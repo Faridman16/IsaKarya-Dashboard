@@ -16,6 +16,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { EventEmitterService } from './_services/event-emitter.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,10 @@ import { EventEmitterService } from './_services/event-emitter.service';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
   ],
-  providers: [EventEmitterService],
+  providers: [
+    EventEmitterService,
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
