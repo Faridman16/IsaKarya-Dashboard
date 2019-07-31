@@ -7,6 +7,7 @@ import { OPChartMock } from 'src/app/_mocks/OPChartMock';
 import { LineChartWGDMock } from 'src/app/_mocks/lineChartWGDMock';
 import { FeeChartMock } from '../../_mocks/feeChartMock';
 import { OperationalService } from 'src/app/_services/operational.service';
+import { SaldoPerusahaanService } from 'src/app/_services/saldo-perusahaan.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -34,15 +35,12 @@ export class DashboardComponent implements OnInit {
       }
     }  
     
-  constructor(
-    private opService: OperationalService,
-  ) { }
-  
+    
   // POSISI SALDO CHART
-  lineBigDashboardChartData = bigChartMock.data;
-  lineBigDashboardChartLabels = bigChartMock.labels;
-  lineBigDashboardChartOptions = bigChartMock.chartOptions;
-  lineBigDashboardChartColors: any;
+  PSChartData: ChartDataSets[] = bigChartMock.data;
+  PSChartLabels: ChartDataLabels[] = bigChartMock.labels;
+  PSChartOptions = bigChartMock.chartOptions;
+  PSChartColors: any;
   
   // Operational Chart
   OPChartData: ChartDataSets[] = OPChartMock.data;
@@ -61,6 +59,11 @@ export class DashboardComponent implements OnInit {
   feeChartLabel = FeeChartMock.labels;
   feeChartOptions = FeeChartMock.chartOptions
   feeChartColors: any;
+
+  constructor(
+    private opService: OperationalService,
+    private skService: SaldoPerusahaanService,
+  ) { }
   
   public chartClicked(e: any): void {
     console.log(e);
@@ -74,17 +77,17 @@ export class DashboardComponent implements OnInit {
     this.getOPChart();
     // FOR GRADIENT BIG CHART
     const chartColor = '#FFFFFF';
-    this.canvas = document.getElementById('bigDashboardChart');
+    this.canvas = document.getElementById('PSChart');
     let ctx = this.canvas.getContext('2d');
 
     let gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
     gradientStroke.addColorStop(0, '#80b6f4');
     gradientStroke.addColorStop(1, chartColor);
-
+    
     let gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
     gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
     gradientFill.addColorStop(1, 'rgba(255, 255, 255, 0.24)');
-    this.lineBigDashboardChartColors = [
+    this.PSChartColors = [
       {
         backgroundColor: gradientFill,
         borderColor: chartColor,
@@ -173,9 +176,28 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  getPKChart(){
+    this.skService.getPSData().subscribe(res => {
+      console.log(res);
+      this.PSChartData[0].data.length = 0;
+      this.OPChartLabels.length = 0;
+      res.forEach(ps => {
+        this.PSChartData[0].data.push(ps.saldo_akhir.toString());
+        this.PSChartLabels.push(ps.tanggal.toString());
+      });
+
+      this.PSChartData = this.PSChartData.reverse();
+      this.PSChartLabels = this.PSChartLabels.reverse();
+
+      this.updateChart();
+
+    });
+  }
+
   updateChart() {
     setTimeout(() => {
       this.OPChartData = this.OPChartData.slice();
+      this.PSChartData = this.PSChartData.slice();
     },300);    
   }
 

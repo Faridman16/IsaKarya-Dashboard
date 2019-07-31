@@ -16,12 +16,17 @@ export class SaldoPerusahaanService {
     return this.http.get<Object[]>(environment.api+'posisi_saldo/');
   }
 
+  getPSData(): Observable<any>{
+    return this.http.get<Object[]>(environment.api+'posisi_saldo/?fetch=12');
+  }
+
+  getImgUrlRek(): Observable<any>{
+    return this.http.get<any>(environment.api+'posisi_saldo/rek_koran/');
+  }
+
   addRekKoran(rekKoran): Observable<Object[]>{
     console.log(rekKoran);
     return this.http.post<Object[]>(environment.api+'posisi_saldo/',rekKoran);
   }
 
-  getImgUrlRek(): Observable<JSON>{
-    return this.http.get<JSON>(environment.api+'posisi_saldo/rek_koran/');
-  }
 }
